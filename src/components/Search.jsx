@@ -5,17 +5,14 @@ const InputContainer = styled.label`
   display: flex;
   align-items: center;
   background-color: var(--colors-ui-base);
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow);
   width: 100%;
   margin-bottom: 1rem;
 
-  input::placeholder {
-    color: var(--colors-text);
-  }
-
   @media(min-width: 767px) {
+    padding: 1rem 2rem;
     margin-bottom: 0;
     width: 360px;
   }
@@ -23,13 +20,19 @@ const InputContainer = styled.label`
 
 const Input = styled.input.attrs({
   type: 'search',
-  placeholder: 'feel the atmosphere of'
+  // placeholder: 'feel the atmosphere of'
+  placeholder: 'atmosphere of...'
 })`
-  margin-left: 2rem;
+  margin-left: 1rem;
   border: none;
   outline: none;
   background-color: var(--colors-ui-base);
   color: var(--colors-text);
+  width: 100%;
+
+  @media(min-width: 767px) {
+    margin-left: 2rem;
+  }
 `;
 
 export const Search = ({ search, setSearch }) => {
