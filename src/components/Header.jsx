@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container } from './Container';
 import { IoMoon, IoSunnySharp } from 'react-icons/io5';
