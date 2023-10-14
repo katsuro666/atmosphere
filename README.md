@@ -1,8 +1,11 @@
-# React + Vite
+# a t m o s p h e r e
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### SPA приложение для того чтобы "прочувствовать" атмосферу любой страны в мире. 
 
-Currently, two official plugins are available:
+Всё просто. Для того чтобы увидеть атмосферные фотографии, нужно просто выбрать интересующую страну. 
+Для удобства на главной странице присутствует поиск, также возможен фильтр по частям света. 
+Также для удобства пользователя реализован выбор темы, тема запоминается в localStorage и сохраняется даже после перезагрузки. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Так как я использовал бесплатный API, лимит 25 запросов в час.
+
+##### Стек: Vite, React, Redux, react-router-dom, unsplash-js, axios, styled-components
