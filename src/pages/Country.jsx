@@ -84,24 +84,29 @@ export const Country = () => {
   const allCountries = useSelector((state) => state.countries.countries);
   const thisCountryObj = allCountries.find((country) => country.name.common === name);
   const langCode = Object.keys(thisCountryObj.name.nativeName)[0];
-  const localName = thisCountryObj.name.nativeName[langCode].common
+  const localName = thisCountryObj.name.nativeName[langCode].common;
 
   useEffect(() => {
-    unsplash.photos
-      .getRandom({
-        query: name,
-      })
-      .then((result) => {
+    const fetchPhoto = async () => {
+      try {
+        const result = await unsplash.photos.getRandom({
+          query: name,
+        });
+
         if (result.errors) {
-          console.log('error occurred: ', result.errors[0]);
+          console.log('Error occurred: ', result.errors[0]);
         } else {
           const url = result.response.urls.regular;
           setPictureColor(result.response.color);
           setPhotoUrl(url);
         }
-      });
-  }, [localName]);
+      } catch (error) {
+        console.log('Error occurred: ', error);
+      }
+    };
 
+    fetchPhoto();
+  }, [name]);
 
   return (
     <>
@@ -109,9 +114,7 @@ export const Country = () => {
         <Button onClick={() => navigate(-1)}>
           <IoArrowBack />
         </Button>
-        <Text data-text={`feel the atmosphere of ${localName}`}>
-          feel the atmosphere of {localName}
-        </Text>
+        <Text data-text={`feel the atmosphere of ${localName}`}>feel the atmosphere of {localName}</Text>
         {photoUrl ? (
           <Image src={photoUrl} alt={name} style={{ boxShadow: `${pictureColor} 0 0 150px` }} />
         ) : (

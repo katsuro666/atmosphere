@@ -9,6 +9,10 @@ const Wrapper = styled.article`
   box-shadow: var(--shadow);
   cursor: pointer;
   overflow: hidden;
+
+  &:hover {
+    box-shadow: var(--shadow-hover);
+  }
 `;
 
 const CardImage = styled.img`
