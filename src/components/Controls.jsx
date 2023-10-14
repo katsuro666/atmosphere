@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { Search } from './Search';
 import { FilterSelect } from './FilterSelect';
+import { useDispatch, useSelector } from 'react-redux';
 
 const options = [
   { value: 'Africa', label: 'Africa' },
@@ -24,14 +25,20 @@ const Wrapper = styled.div`
 `;
 
 export const Controls = ({ onSearch }) => {
+  const dispatch = useDispatch();
   const [search, setSearch] = useState('');
-  const [region, setRegion] = useState('');
+
+  const region = useSelector((state) => state.settings.filter);
 
   useEffect(() => {
-    const regionValue = region?.value || ''
-    onSearch(search, regionValue)
-  // eslint-disable-next-line
-  }, [search, region])
+    const regionValue = region?.value || '';
+    onSearch(search, regionValue);
+    // eslint-disable-next-line
+  }, [search, region]);
+
+  const handleFilterChange = (region) => {
+    dispatch({ type: 'SET_FILTER_SETTINGS', payload: region });
+  };
 
   return (
     <Wrapper>
@@ -42,7 +49,7 @@ export const Controls = ({ onSearch }) => {
         isClearable
         isSearchable={false}
         value={region}
-        onChange={setRegion}
+        onChange={handleFilterChange}
       />
     </Wrapper>
   );
