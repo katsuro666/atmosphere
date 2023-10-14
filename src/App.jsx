@@ -6,6 +6,7 @@ import { Main } from './components/Main';
 import { HomePage } from './pages/HomePage';
 import { Country } from './pages/Country';
 import { NotFound } from './pages/NotFound';
+
 function App() {
   const [countries, setCountries] = useState([]);
 

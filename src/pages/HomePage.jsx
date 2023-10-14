@@ -6,8 +6,12 @@ import { ALL_COUNTRIES } from '../config';
 import { CountriesList } from '../components/CountriesList';
 import { CountryCard } from '../components/CountryCard';
 import { Controls } from '../components/Controls';
+
+import { useDispatch } from 'react-redux';
+
 export const HomePage = ({ countries, setCountries }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [filteredCountries, setFilteredCountries] = useState(countries);
 
@@ -30,6 +34,7 @@ export const HomePage = ({ countries, setCountries }) => {
       axios.get(ALL_COUNTRIES).then(({ data }) => {
         setCountries(data);
         setFilteredCountries(data);
+        dispatch({ type: 'ADD_COUNTRIES', payload: data });
       });
     }
   }, []);

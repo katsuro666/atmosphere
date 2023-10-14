@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { createApi } from 'unsplash-js';
 import { IoArrowBack } from 'react-icons/io5';
 import { Triangle } from 'react-loader-spinner';
+import { useSelector } from 'react-redux';
 
 const Image = styled.img`
   width: 100%;
@@ -72,12 +73,18 @@ const Button = styled.button`
 export const Country = () => {
   const { name } = useParams();
   const navigate = useNavigate();
+
   const [photoUrl, setPhotoUrl] = useState('');
   const [pictureColor, setPictureColor] = useState('');
 
   const unsplash = createApi({
     accessKey: import.meta.env.VITE_UNSPLASH_ACCESS_KEY,
   });
+
+  const allCountries = useSelector((state) => state.countries.countries);
+  const thisCountryObj = allCountries.find((country) => country.name.common === name);
+  const langCode = Object.keys(thisCountryObj.name.nativeName)[0];
+  const localName = thisCountryObj.name.nativeName[langCode].common
 
   useEffect(() => {
     unsplash.photos
@@ -93,7 +100,8 @@ export const Country = () => {
           setPhotoUrl(url);
         }
       });
-  }, [name]);
+  }, [localName]);
+
 
   return (
     <>
@@ -101,7 +109,9 @@ export const Country = () => {
         <Button onClick={() => navigate(-1)}>
           <IoArrowBack />
         </Button>
-        <Text data-text={`feel the atmosphere of ${name}`}>feel the atmosphere of {name}</Text>
+        <Text data-text={`feel the atmosphere of ${localName}`}>
+          feel the atmosphere of {localName}
+        </Text>
         {photoUrl ? (
           <Image src={photoUrl} alt={name} style={{ boxShadow: `${pictureColor} 0 0 150px` }} />
         ) : (
