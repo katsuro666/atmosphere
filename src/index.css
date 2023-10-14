@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,600;6..12,800&display=swap');
 * {
   box-sizing: border-box;
+  transition: all .3s ease;
 }
 
 :root {
@@ -16,16 +17,23 @@ body[data-theme='dark'] {
   --colors-text: hsl(0, 0%, 100%);
   --colors-bg: hsl(207, 26%, 17%);
   --colors-ui-base: hsl(209, 23%, 22%);
+  --colors-ui-base-hover: hsl(209, 25%, 17%);
 
   --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+  --shadow-shine: rgba(245, 245, 245, 0.08) 0 20px 30px;
+  --shadow-hover: rgba(245, 245, 245, 0.2) 0 0 30px;
+
 }
 
 body[data-theme='light'] {
   --colors-text: hsl(200, 15%, 8%);
   --colors-bg: hsl(0, 0%, 98%);
   --colors-ui-base: hsl(0, 0%, 100%);
+  --colors-ui-base-hover: hsl(0, 5%, 89%);
 
   --shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+  --shadow-shine: rgba(149, 157, 165, 0.5) 0 0 50px;
+  --shadow-hover: rgba(149, 157, 165, 0.5) 0 0 50px;
 }
 
 body {
