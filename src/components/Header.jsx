@@ -50,9 +50,12 @@ const ThemeLabel = styled.span`
 `;
 
 export const Header = () => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+    theme === 'dark' ? localStorage.setItem('theme', 'light') : localStorage.setItem('theme', 'dark');
+  };
 
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
