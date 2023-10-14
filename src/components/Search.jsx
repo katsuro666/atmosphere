@@ -20,8 +20,8 @@ const InputContainer = styled.label`
 
 const Input = styled.input.attrs({
   type: 'search',
-  // placeholder: 'feel the atmosphere of'
-  placeholder: 'atmosphere of...'
+  placeholder: 'feel the vibe of...'
+  // placeholder: 'atmosphere of...'
 })`
   margin-left: 1rem;
   border: none;
@@ -29,6 +29,11 @@ const Input = styled.input.attrs({
   background-color: var(--colors-ui-base);
   color: var(--colors-text);
   width: 100%;
+
+  &::placeholder {
+    color: var(--colors-text);
+    // letter-spacing: 0.1em;
+  }
 
   @media(min-width: 767px) {
     margin-left: 2rem;

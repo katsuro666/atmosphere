@@ -14,9 +14,17 @@ const Wrapper = styled.article`
 const CardImage = styled.img`
   display: block;
   width: 100%;
-  height: 70%;
+  height: 180px;
   object-position: center;
   box-shadow: var(--shadow);
+
+  @media (min-width: 500px) {
+    height: 80%;
+  }
+
+  @media (min-width: 767px) {
+    height: 180px;
+  }
 `;
 
 const CardBody = styled.div`
@@ -28,6 +36,11 @@ const CardTitle = styled.h3`
   text-align: center;
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
+  letter-spacing: 2px;
+
+  @media (min-width: 767px) {
+    // font-size: var(--fs-lg);
+  }
 `;
 
 export const CountryCard = ({ img, name, onClick }) => {

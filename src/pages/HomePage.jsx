@@ -28,8 +28,8 @@ export const HomePage = ({ countries, setCountries }) => {
   useEffect(() => {
     if (!countries.length) {
       axios.get(ALL_COUNTRIES).then(({ data }) => {
-        setCountries(data)
-        setFilteredCountries(data)
+        setCountries(data);
+        setFilteredCountries(data);
       });
     }
   }, []);
